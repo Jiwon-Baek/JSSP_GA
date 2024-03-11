@@ -1,5 +1,9 @@
 import simpy
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+from config import *
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
 from config import *
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -9,7 +13,11 @@ from .Monitor import *
 # region Sink
 class Sink(object):
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __init__(self, env, monitor, config):
+=======
+    def __init__(self, env, monitor):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
     def __init__(self, env, monitor):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -22,7 +30,10 @@ class Sink(object):
         # 마지막 Part가 도착한 시간
         self.last_arrival = 0.0
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.config = config
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         # self.finished = simpy.Event()
@@ -32,17 +43,23 @@ class Sink(object):
         self.parts_rec += 1
         self.last_arrival = self.env.now
 <<<<<<< HEAD
+<<<<<<< HEAD
         monitor_by_console(self.config.print_console, self.env, part, self.config.trace_object, "Completed on")
         self.monitor.record(self.env.now, self.name, machine=None,
                             part_name=part.name, event="Completed")
 
         if self.parts_rec == self.config.n_job:
 =======
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         monitor_by_console(CONSOLE_MODE, self.env, part, OBJECT, "Completed on")
         self.monitor.record(self.env.now, self.name, machine=None,
                             part_name=part.name, event="Completed")
 
         if self.parts_rec == 10:
+<<<<<<< HEAD
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
+=======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
             self.last_arrival = self.env.now
             # print(str(self.env.now))

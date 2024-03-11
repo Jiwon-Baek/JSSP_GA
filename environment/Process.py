@@ -1,18 +1,24 @@
 import simpy
 from .Monitor import *
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 class Process(object):
     def __init__(self, _env, _name, _model, _monitor, _machine_order, config):
 
         self.config = config
 =======
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 from config import *
 from data import *
 
 class Process(object):
     def __init__(self, _env, _name, _model, _monitor, _machine_order, capacity=float('inf'), priority=1, in_buffer=float('inf'),
                  out_buffer=float('inf')):
+<<<<<<< HEAD
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
+=======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         # input data
         self.env = _env
@@ -20,6 +26,11 @@ class Process(object):
         self.model = _model
         self.monitor = _monitor
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        self.capa = capacity  # 해당 프로세스의 동시 작업 한도
+        self.priority = priority  # 해당 프로세스의 우선 순위
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
         self.capa = capacity  # 해당 프로세스의 동시 작업 한도
         self.priority = priority  # 해당 프로세스의 우선 순위
@@ -34,12 +45,18 @@ class Process(object):
 
         # buffer and machine
 <<<<<<< HEAD
+<<<<<<< HEAD
         # self.in_part = simpy.FilterStore(_env, capacity=self.config.n_job + 1)
         # self.part_ready = simpy.FilterStore(_env, capacity=self.config.n_job + 1)
         # self.out_part = simpy.FilterStore(_env, capacity=self.config.n_job + 1)
         self.in_part = simpy.FilterStore(_env)
         self.part_ready = simpy.FilterStore(_env)
         self.out_part = simpy.FilterStore(_env)
+=======
+        self.in_part = simpy.FilterStore(_env, capacity=in_buffer + capacity)
+        self.part_ready = simpy.FilterStore(_env, capacity=100)
+        self.out_part = simpy.FilterStore(_env, capacity=out_buffer)
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
         self.in_part = simpy.FilterStore(_env, capacity=in_buffer + capacity)
         self.part_ready = simpy.FilterStore(_env, capacity=100)
@@ -68,7 +85,11 @@ class Process(object):
 
             # 2. check the machines(resources) that are suitable for the process.
 <<<<<<< HEAD
+<<<<<<< HEAD
             if isinstance(operation.machine, list):
+=======
+            if isinstance(operation.machine_list, list):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
             if isinstance(operation.machine_list, list):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -77,6 +98,7 @@ class Process(object):
                 (not given as a set, or a list)
                 """
                 # compatible machine list
+<<<<<<< HEAD
 <<<<<<< HEAD
                 machine = operation.machine[0]
                 # process time on the certain machine
@@ -101,6 +123,8 @@ class Process(object):
             self.input_event.succeed()
             # self.input_event = simpy.Event(self.env)
 =======
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
                 machine = operation.machine_list[0]
                 # process time on the certain machine
                 process_time = operation.process_time[0]
@@ -122,6 +146,9 @@ class Process(object):
             machine.util_time += process_time
             self.input_event.succeed()
             self.input_event = simpy.Event(self.env)
+<<<<<<< HEAD
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
+=======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 
             # 4. Send(route) to the out_part queue for routing and update the machine availability
@@ -130,6 +157,7 @@ class Process(object):
 
     def dispatch(self):
         while True:
+<<<<<<< HEAD
 <<<<<<< HEAD
             yield self.input_event
             self.input_event = simpy.Event(self.env)
@@ -143,6 +171,8 @@ class Process(object):
             elif self.config.dispatch_mode == 'Manual':
                 # # Version 2 - Solution Rule
 =======
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 
             if DISPATCH_MODE == 'FIFO':
                 # # # Version 1 - FIFO Rule
@@ -155,6 +185,9 @@ class Process(object):
             elif DISPATCH_MODE == 'Manual':
                 # # Version 2 - Solution Rule
                 yield self.input_event
+<<<<<<< HEAD
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
+=======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
                 num_scan = len(self.in_part.items)
                 for i in range(num_scan):
@@ -162,7 +195,10 @@ class Process(object):
                         part_ready = yield self.in_part.get(lambda x: x.part_type == self.machine_order[self.scheduled])
                         # print("Part ", part_ready.part_type, "is prepared")
 <<<<<<< HEAD
+<<<<<<< HEAD
                         # self.part_ready.put(part_ready)
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
                         yield self.part_ready.put(part_ready)
@@ -170,7 +206,11 @@ class Process(object):
 
     def check_item(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         if self.config.print_console & (self.name == self.config.trace_object):
+=======
+        if CONSOLE_MODE & (self.name == 'Process4'):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
         if CONSOLE_MODE & (self.name == 'Process4'):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -180,7 +220,11 @@ class Process(object):
         for i, item in enumerate(self.in_part.items):
             if item.part_type == self.machine_order[self.scheduled]:
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if self.config.print_console & (self.name == self.config.trace_object):
+=======
+                if CONSOLE_MODE & (self.name == 'Process4'):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
                 if CONSOLE_MODE & (self.name == 'Process4'):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -195,8 +239,12 @@ class Process(object):
 
             # update part status
 <<<<<<< HEAD
+<<<<<<< HEAD
             if part.step != (self.config.n_machine - 1):  # for operation 0,1,2,3 -> part.step = 1,2,3,4
             # if part.step != NUM_MACHINE - 1:  # for operation 0,1,2,3 -> part.step = 1,2,3,4
+=======
+            if part.step != NUM_MACHINE - 1:  # for operation 0,1,2,3 -> part.step = 1,2,3,4
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
             if part.step != NUM_MACHINE - 1:  # for operation 0,1,2,3 -> part.step = 1,2,3,4
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282

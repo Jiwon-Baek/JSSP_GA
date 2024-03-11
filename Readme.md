@@ -1,4 +1,3 @@
-
 # JSSP with MIO score
 
 Process의 병렬처리가 불가능해 JSSP 문제에만 활용 가능합니다.

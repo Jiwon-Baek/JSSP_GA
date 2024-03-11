@@ -1,5 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+from data import op_data
+from config import *
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
 from data import op_data
 from config import *
@@ -15,7 +20,11 @@ class Operation(object):
     """
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __init__(self, env, id, part_name, process_type, machine, process_time, requirements=None):
+=======
+    def __init__(self, env, id, part_name, process_type, machine_list, process_time, requirements=None):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
     def __init__(self, env, id, part_name, process_type, machine_list, process_time, requirements=None):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -28,7 +37,11 @@ class Operation(object):
 
         # In the simplest Job Shop problem, process type is often coincide with the machine type itself.
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.machine = machine
+=======
+        self.machine_list = machine_list
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
         self.machine_list = machine_list
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -56,7 +69,11 @@ class Job(object):
     """
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __init__(self, env, part_type, id, op_data):
+=======
+    def __init__(self, env, part_type, id):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
     def __init__(self, env, part_type, id):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -69,7 +86,11 @@ class Job(object):
                              id=j, part_name=self.name,
                              process_type=op_data[part_type][j][0],
 <<<<<<< HEAD
+<<<<<<< HEAD
                              machine=op_data[part_type][j][0],
+=======
+                             machine_list=op_data[part_type][j][0],
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
                              machine_list=op_data[part_type][j][0],
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282

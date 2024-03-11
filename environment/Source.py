@@ -1,6 +1,7 @@
 import simpy
 import numpy as np
 <<<<<<< HEAD
+<<<<<<< HEAD
 from environment.Part import Job
 
 
@@ -9,6 +10,8 @@ class Source(object):
     def __init__(self, _env, _name, _model, _monitor, part_type, op_data, config,
                  IAT='exponential(1)'):
 =======
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 from .Part import Job, Operation
 
 from config import *
@@ -16,6 +19,9 @@ from config import *
 # region Source
 class Source(object):
     def __init__(self, _env, _name, _model, _monitor, part_type, IAT='exponential(1)', num_parts=float('inf')):
+<<<<<<< HEAD
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
+=======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         self.env = _env
         self.name = _name  # 해당 Source의 이름
@@ -23,11 +29,16 @@ class Source(object):
         self.monitor = _monitor
         self.part_type = part_type  # Source가 생산하는 Part의 type
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.IAT = config.IAT  # Source가 생성하는 Part의 IAT(jobtype을 통한 Part 생성)
         # self.num_parts = config.num_parts  # Source가 생성하는 Part의 갯수
         self.num_parts = float('inf')
         self.op_data = op_data
         self.config = config
+=======
+        self.IAT = IAT  # Source가 생성하는 Part의 IAT(jobtype을 통한 Part 생성)
+        self.num_parts = num_parts  # Source가 생성하는 Part의 갯수
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
         self.IAT = IAT  # Source가 생성하는 Part의 IAT(jobtype을 통한 Part 생성)
         self.num_parts = num_parts  # Source가 생성하는 Part의 갯수
@@ -44,7 +55,11 @@ class Source(object):
             while self.rec < self.num_parts:
                 # 1. Generate a Part Object
 <<<<<<< HEAD
+<<<<<<< HEAD
                 part = Job(self.env, self.part_type, self.rec, self.op_data)
+=======
+                part = Job(env=self.env, part_type=self.part_type, id=self.rec)
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
                 part = Job(env=self.env, part_type=self.part_type, id=self.rec)
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -62,7 +77,11 @@ class Source(object):
 
                 # 4. Print through Console (Optional)
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if self.config.print_console:
+=======
+                if CONSOLE_MODE:
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
                 if CONSOLE_MODE:
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -79,6 +98,7 @@ class Source(object):
 
     def routing(self):
         while True:
+<<<<<<< HEAD
 <<<<<<< HEAD
             while self.rec < self.num_parts:
                 # 1. Get a part from the list of generated parts
@@ -111,6 +131,8 @@ class Source(object):
                 self.monitor.record(self.env.now, next_process.name, machine=None,
                                     part_name=part.name, event=part.name+" transferred from Source")
 =======
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
             # 1. Get a part from the list of generated parts
             part = yield self.generated_parts.get()
             part.step += 1  # this makes part.step to 0
@@ -138,6 +160,9 @@ class Source(object):
                                 event="Routing Finished")
             self.monitor.record(self.env.now, next_process.name, machine=None,
                                 part_name=part.name, event="Part transferred from Source")
+<<<<<<< HEAD
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
+=======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 
 

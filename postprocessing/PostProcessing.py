@@ -1,5 +1,6 @@
 import pandas as pd
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 from collections import OrderedDict, defaultdict
 
@@ -7,12 +8,17 @@ from collections import OrderedDict, defaultdict
 def machine_log(config):
     df = pd.read_csv(config.filepath['log'])
 =======
+=======
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 from collections import OrderedDict, defaultdict
 from config import *
 
 
 def machine_log(_filepath):
     df = pd.read_csv(_filepath)
+<<<<<<< HEAD
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
+=======
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
     df = df.drop(df.columns[0], axis=1)
     # Filter 'Started' and 'Finished' events
@@ -22,7 +28,11 @@ def machine_log(_filepath):
     machine_start = []
     machine_finish = []
 <<<<<<< HEAD
+<<<<<<< HEAD
     for i in range(config.n_machine):
+=======
+    for i in range(NUM_MACHINE):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
     for i in range(NUM_MACHINE):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -34,7 +44,11 @@ def machine_log(_filepath):
     data = []
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     for i in range(config.n_machine):
+=======
+    for i in range(NUM_MACHINE):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
     for i in range(NUM_MACHINE):
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
@@ -50,8 +64,12 @@ def machine_log(_filepath):
     data = data.sort_values(by=['Start'])
     data.reset_index(drop=True, inplace=True)
 <<<<<<< HEAD
+<<<<<<< HEAD
     if config.save_machinelog:
         data.to_csv(config.filepath['machine'])
+=======
+    data.to_csv('./result/' + filename + '_machine_log.csv')
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 =======
     data.to_csv('./result/' + filename + '_machine_log.csv')
 >>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
