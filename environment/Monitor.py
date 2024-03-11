@@ -1,9 +1,18 @@
 import pandas as pd
+<<<<<<< HEAD
 
 # region Monitor
 class Monitor(object):
     def __init__(self, config):
         self.config = config  ## Event tracer 저장 경로
+=======
+from config import *
+
+# region Monitor
+class Monitor(object):
+    def __init__(self, filepath):
+        self.filepath = filepath  ## Event tracer 저장 경로
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         self.time = list()
         self.event = list()
         self.part = list()
@@ -24,8 +33,13 @@ class Monitor(object):
         event_tracer['Part'] = self.part
         event_tracer['Process'] = self.process_name
         event_tracer['Machine'] = self.machine_name
+<<<<<<< HEAD
         if self.config.save_log:
             event_tracer.to_csv(self.config.filename['log'])
+=======
+
+        event_tracer.to_csv(self.filepath)
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 
         return event_tracer
 
@@ -38,17 +52,27 @@ def monitor_by_console(console_mode, env, part, object='Single Part', command=''
         command = " " + command + " "
         if object == 'Single Part':
             if operation.process_type == 0:
+<<<<<<< HEAD
                 print(str(env.now) + '\t' + str(operation.name) + command + 'M' + str(operation.machine))
         elif object == 'Single Job':
             if operation.part_name == 'Part0_0':
                 print(str(env.now) + '\t' + str(operation.name) + command + 'M' + str(operation.machine))
         elif object == 'Entire Process':
             print(str(env.now) + '\t' + str(operation.name) + command + 'M' + str(operation.machine))
+=======
+                print(str(env.now) + '\t' + str(operation.name) + command + 'M' + str(operation.machine_list))
+        elif object == 'Single Job':
+            if operation.part_name == 'Part0_0':
+                print(str(env.now) + '\t' + str(operation.name) + command + 'M' + str(operation.machine_list))
+        elif object == 'Entire Process':
+            print(str(env.now) + '\t' + str(operation.name) + command + 'M' + str(operation.machine_list))
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         elif object == 'Machine':
             print_by_machine(env, part)
 
 
 def print_by_machine(env, part):
+<<<<<<< HEAD
     if part.op[part.step].machine == 0:
         print(str(env.now) + '\t\t\t\t' + str(part.op[part.step].name))
     elif part.op[part.step].machine == 1:
@@ -58,6 +82,17 @@ def print_by_machine(env, part):
     elif part.op[part.step].machine == 3:
         print(str(env.now) + '\t\t\t\t\t\t\t\t\t\t\t\t\t' + str(part.op[part.step].name))
     elif part.op[part.step].machine == 4:
+=======
+    if part.op[part.step].machine_list == 0:
+        print(str(env.now) + '\t\t\t\t' + str(part.op[part.step].name))
+    elif part.op[part.step].machine_list == 1:
+        print(str(env.now) + '\t\t\t\t\t\t\t' + str(part.op[part.step].name))
+    elif part.op[part.step].machine_list == 2:
+        print(str(env.now) + '\t\t\t\t\t\t\t\t\t\t' + str(part.op[part.step].name))
+    elif part.op[part.step].machine_list == 3:
+        print(str(env.now) + '\t\t\t\t\t\t\t\t\t\t\t\t\t' + str(part.op[part.step].name))
+    elif part.op[part.step].machine_list == 4:
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         print(str(env.now) + '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t' + str(part.op[part.step].name))
     else:
         print()

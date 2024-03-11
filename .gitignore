@@ -6,6 +6,6 @@ __pycache__/
 postprocessing/__pycache__/
 MachineInputOrder/__pycache__/
 GA_pyGAD/__pycache__/
-.idea
+.idea/
 Data/__pycache__/
 *.pyc

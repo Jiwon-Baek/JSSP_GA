@@ -20,7 +20,6 @@ def color(row):
               'Part9': '#fc8c84'}
     return c_dict[row['Job'][0:5]]
 
-
 def Gantt(result, num, config):
 
     df = result.iloc[0:num].copy()
@@ -36,6 +35,7 @@ def Gantt(result, num, config):
               'Part9': '#fc8c84'}
     legend_elements = [Patch(facecolor=c_dict[i], label=i) for i in c_dict]
     plt.legend(handles=legend_elements)
+
     plt.title(config.gantt_title, size=24)
 
     ##### TICKS #####

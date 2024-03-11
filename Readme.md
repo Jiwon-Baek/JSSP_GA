@@ -1,3 +1,4 @@
+
 # JSSP with MIO score
 
 Process의 병렬처리가 불가능해 JSSP 문제에만 활용 가능합니다.
@@ -16,6 +17,20 @@ Process의 병렬처리가 불가능해 JSSP 문제에만 활용 가능합니다
 3. GA_V2.py
 
 # Module Descriptions
+- environment
+  - monitor.py
+  - part.py
+  - process.py
+  - resource.py
+  - Sink.py
+  - Source.py
+- postprocessing
+  - PostProcessing.py
+- test
+  - test_main.py
+- visualization
+  - Gantt.py
+  - GUI.py
   
 
 - GA.py : GA에 필요한 Individual class 포함

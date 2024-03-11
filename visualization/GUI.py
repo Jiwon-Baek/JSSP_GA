@@ -1,7 +1,17 @@
 from visualization.Gantt import Gantt
 import io
 from tkinter import *
+from tkinter.scrolledtext import ScrolledText
+import random
+import simpy
+from config import *
+import pandas as pd
+# import plotly.express as px
+# import plotly.graph_objects as go
+# import plotly.io as pio
 from PIL import Image, ImageTk
+# from globals.GlobalVariable import *
+from collections import defaultdict
 
 simmode = ''
 
@@ -50,7 +60,6 @@ class GUI_Update():
         self.tk.mainloop()
 
     def update(self):
-
         total_images = self.config.n_op # slide show처럼 돌릴 이미지 개수
 
         self.gantt.config(image=self.tk_images[self.current_image])
@@ -67,4 +76,3 @@ class GUI_Update():
             self.tk.after(self.config.show_interval_time, self.update)  # Pause for 2000 milliseconds (2 seconds)
         else:
             self.tk.after(self.config.finished_pause_time, self.update)  # Pause for 2000 milliseconds (2 seconds)
-

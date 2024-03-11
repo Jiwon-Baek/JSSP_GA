@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 
+=======
+from data import op_data
+from config import *
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 
 # region Operation
 class Operation(object):
@@ -9,7 +14,11 @@ class Operation(object):
     The Process class is to be generated further.
     """
 
+<<<<<<< HEAD
     def __init__(self, env, id, part_name, process_type, machine, process_time, requirements=None):
+=======
+    def __init__(self, env, id, part_name, process_type, machine_list, process_time, requirements=None):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
 
         self.id = id
         self.process_type = process_type
@@ -18,7 +27,11 @@ class Operation(object):
         self.name = part_name + '_Op' + str(id)
 
         # In the simplest Job Shop problem, process type is often coincide with the machine type itself.
+<<<<<<< HEAD
         self.machine = machine
+=======
+        self.machine_list = machine_list
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         if requirements is None:
             self.requirements = env.event()  # preceding event
             if id == 0:
@@ -42,7 +55,11 @@ class Job(object):
     Member Variable : part_type, id
     """
 
+<<<<<<< HEAD
     def __init__(self, env, part_type, id, op_data):
+=======
+    def __init__(self, env, part_type, id):
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
         self.part_type = part_type
         self.id = id
         self.name = 'Part' + str(part_type) + '_' + str(id)
@@ -51,7 +68,11 @@ class Job(object):
         self.op = [Operation(env,
                              id=j, part_name=self.name,
                              process_type=op_data[part_type][j][0],
+<<<<<<< HEAD
                              machine=op_data[part_type][j][0],
+=======
+                             machine_list=op_data[part_type][j][0],
+>>>>>>> 322e220bf514fcc8e59f3f4bb456154fb0501282
                              process_time=op_data[part_type][j][1],
                              requirements=None) for j in range(len(op_data[part_type]))]
 
